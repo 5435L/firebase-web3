@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Registration</title>
+    <link rel = "Stylesheet" href = "css/log-reg.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Comforter+Brush&family=Gochi+Hand&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class = "background">
+
+    </div>
+    <div class="container">
+        <div class="item">
+            <h2 class="logo">
+                <ion-icon class = "head-icon-1" name="bookmark"></ion-icon>
+                EventPro
+                <h2 class = "logo-2">
+                    <ion-icon class = "head-icon-2" name="navigate-circle-outline"></ion-icon> 
+                </h2>
+            </h2>
+            <div class="text-item">
+                <h2>
+                    Welcome! 
+                    <span>
+                        Introducing EventPro: Your Gateway to Seamless Event Management
+                    </span>
+                </h2>
+                <p>
+                    Create an account to access the full website and enjoy convenient event registration, real-time updates, and personalized experiences. Say goodbye to manual processes and hello to effortless event management with EventPro.
+                </p>
+            </div>
+        </div>
+
+
+        <div class = "signup-section">
+            <form id = "MainForm">
+
+                <h2>
+                    Sign Up
+                </h2>
+    
+                <div class = "input-box">
+                    <span class = "icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <input class = "input-user" type = "text" id = "usernameinp" required>
+                    <label class = "label-user" for="">Username</label>
+                </div>
+                <div class = "input-box">
+                    <span class = "icon">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </span>
+                    <input class = "input-user" type = "email" id = "emailinp" required>
+                    <label class = "label-user" for=""> Email</label>
+                </div>
+                <div class = "input-box">
+                    <span class = "icon">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                    </span>
+                    <input class = "input-user" type = "password" id = "passwordinp" required>
+                    <label class = "label-user" for="">Password</label>
+                </div>
+                <div class="remember-password">
+                    <label for = "">
+                        <input type = "checkbox">
+                        I agree to this term
+                    </label>
+                </div>
+                <button type = "submit" class = "submit-btn">
+                    Sign Up
+                </button>
+                <div class = "create-account">
+                    <p>
+                        Already Have An Account? <a href = "#" class = "login-link">Sign In</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        
+
+    </div>
+
+    <a href = "home.html">
+        <div class = "back-icon-mother">
+            <ion-icon class = "back-icon" name="arrow-back-outline"></ion-icon>
+        </div>
+        </a>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+        const firebaseConfig = {
+          apiKey: "AIzaSyDdhwnxI1gIuDf2j7pG05T4CvwEoJ_SPyQ",
+          authDomain: "fir-v10-78ebd.firebaseapp.com",
+          projectId: "fir-v10-78ebd",
+          storageBucket: "fir-v10-78ebd.appspot.com",
+          messagingSenderId: "310853734461",
+          appId: "1:310853734461:web:f254c01de99f0a36775a54"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+
+        let usernameinp = document.getElementById('usernameinp')
+        let emailinp = document.getElementById('emailinp')
+        let passwordinp = document.getElementById('passwordinp')
+        let MainForm = document.getElementById('MainForm')
+
+        let RegisterUser = evt => {
+            evt.preventDefault();
+
+            createUserWithEmailAndPassword(auth, emailinp.value, passwordinp.value)
+            .then((credentials)=>{
+                console.log(error.code);
+            })
+            .catch((error)=> {
+                alert("Created Successfully!");
+            })
+        }
+
+        MainForm.addEventListener('submit', RegisterUser);
+      </script>
+</body>
+</html>

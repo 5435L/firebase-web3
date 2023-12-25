@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPro Firebase (homepage 2)</title>
+    <link rel = "Stylesheet" href = "css/home-2.css">
+</head>
+<body>
+    
+    <div class = "nav">
+        <div class = "nav-1">
+            <ion-icon class = "head-icon-1" name="bookmark"></ion-icon>
+            <div class = "nav-1-child">
+                <ion-icon class = "head-icon-2" name="navigate-circle-outline"></ion-icon>
+            </div>
+        </div>
+        <div class = "nav-2">
+                <a class = "about-us" href = "htmls-v2/aboutus.html">
+                    About Us
+                </a>
+        </div>
+        <div class = "nav-3">
+                <a class = "subject" href = "htmls-v2/subject.html">
+                    Subject
+                </a>
+        </div>
+        <div class = "nav-4">
+                <a class = "contact-us" href = "htmls-v2/contactus.html">
+                    Contact Us
+                </a>
+        </div>
+        <div class = "nav-4">
+            <button class = "signout-btn" type = "button" id = "signoutbutton"> Sign Out</button>
+        </div>
+    </div>
+
+    <div class = "content-0-1">
+            <div class="content-1">    
+        
+                <div class="div">
+                    <p>
+                        Amelia's Garden Events Place
+                    </p>
+                    <a href = "homepage-v2/amelia-homepage.html">
+                    <img src = "cartoonized-event-venue-1/cartoonized-amelia-3.png">
+                    </a>
+                </div>
+                <div class="div">
+                    <p>
+                        The Coco Glass Pavilion
+                    </p>
+                    <a href = "homepage-v2/coco-hompage.html">
+                    <img src = "cartoonized-event-venue-2/cartoonized-coco-3.png">
+                    </a>
+                </div>
+                <div class="div">
+                    <p>
+                        The Hilltop Garden
+                    </p>
+                    <a href = "homepage-v2/hilltop-homepage.html">
+                    <img src = "cartoonized-event-venue-3/cartoonized-hilltop-3.png">
+                    </a>
+                </div>
+                <div class="div">
+                    <p>
+                        EastWood Clubhouse Residence
+                    </p>
+                    <a href = "homepage-v2/club-homepage.html">
+                    <img src = "cartoonized-event-venue-4/cartoonized-club-3.png">
+                    </a>
+                </div>
+                <div class="div">
+                    <p>
+                        RiverSide Coolsite
+                    </p>
+                    <a href = "homepage-v2/coolsite-homepage.html">
+                    <img src = "cartoonized-event-venue-5/cartoonized-coolsite.png">
+                    </a>
+                </div>
+                <div class="div">
+                    <p>
+                        ADV Gardens Place
+                    </p>
+                    <a href = "homepage-v2/adv-homepage.html">
+                    <img src = "cartoonized-event-venue-6/cartoonized-adv.png">
+                    </a>
+                </div>
+                <div class = "only-one">
+                    <p>
+                        EventPro Available Venues
+                    </p>
+                </div>
+            </div>
+
+           
+    </div>
+
+
+    <a href = "htmls-v2/home.html">
+        <div class = "back-icon-mother">
+            <ion-icon class = "back-icon" name="arrow-back-outline"></ion-icon>
+        </div>
+        </a>
+
+        <div>
+            <h2 id = "msg"></h2>
+            <h2 id = "greet"></h2>
+        </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        let MsgHead = document.getElementById('msg');
+        let GreetHead = document.getElementById('greet');
+        let SignoutBtn = document.getElementById('signoutbutton');
+
+
+        let Signout = ()=>{
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = 'log-reg-0.html'
+        }
+
+        let CheckCred = ()=>{
+            if (!sessionStorage.getItem("user-creds"))
+            window.location.href = 'log-reg-0.html'
+
+            else {
+                MsgHead.innerText = `user with email "${UserCreds.username}" logged in`;
+                GreetHead.innerText = `welcome ${UserInfo.username}!`;
+            }
+        }
+
+        window.addEventListener('load', CheckCred);
+        SignoutBtn.addEventListener('click', Signout);
+
+    </script>
+</body>
+</html>

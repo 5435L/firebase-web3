@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "Stylesheet" href = "css/home-2.css">
+</head>
+<body>
+    <div class = "nav">
+        <div class = "nav-1">
+            <ion-icon class = "head-icon-1" name="bookmark"></ion-icon>
+            <div class = "nav-1-child">
+                <ion-icon class = "head-icon-2" name="navigate-circle-outline"></ion-icon>
+            </div>
+        </div>
+        <div class = "nav-2">
+                <a class = "about-us" href = "aboutus.html">
+                    About Us
+                </a>
+        </div>
+        <div class = "nav-3">
+                <a class = "subject" href = "subject.html">
+                    Subject
+                </a>
+        </div>
+        <div class = "nav-4">
+                <a class = "contact-us" href = "contactus.html">
+                    Contact Us
+                </a>
+        </div>
+        <div class = "nav-4">
+            <button class = "btn btn-outline-success" type = "button" id = "signoutbutton"> Sign Out</button>
+        </div>
+    </div>
+
+    
+
+
+    <script>
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        let MsgHead = document.getElementById('msg');
+        let GreetHead = document.getElementById('greet');
+        let SignoutBtn = document.getElementById('signoutbutton');
+
+
+        let Signout = ()=>{
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = 'log-reg-0.html'
+        }
+
+        let CheckCred = ()=>{
+            if (!sessionStorage.getItem("user-creds"))
+            window.location.href = 'log-reg-0.html'
+
+            else {
+                MsgHead.innerText = `user with email "${UserCreds.username}" logged in`;
+                GreetHead.innerText = `welcome ${UserInfo.username}!`;
+            }
+        }
+
+        window.addEventListener('load', CheckCred);
+        SignoutBtn.addEventListener('click', Signout);
+
+    </script>
+</body>
+</html>
