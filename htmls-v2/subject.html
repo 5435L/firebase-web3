@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject</title>
+    <link rel = "Stylesheet" href = "csss-v2/subject.css">
+
+</head>
+<body>
+    <div class = "nav">
+        <div>
+            <a class = "home" href = "home.html">
+                Home
+            </a>
+        </div>
+        <div>
+            <a class = "about-us" href = "aboutus.html">
+                About Us
+            </a>
+        </div>
+        <div>
+            <a class = "contact-us" href = "contactus.html">
+                Contact Us
+            </a>
+        </div>
+        <div class = "nav-4">
+            <button class = "signout-btn" type = "button" id = "signoutbutton"> Sign Out</button>
+        </div>
+    </div>
+
+    <div class = "content-0-1">
+
+        <div class="content-1">
+            <div class = "name-title">
+                <p>
+                    Subject
+                </p>
+            </div>
+
+            <div class = "subject-element">
+                <p>
+                    CAPSTONE 1
+                </p>
+                <p>
+                    Capstone Project 1
+                </p>
+                <p>
+                    Mr. Michael Ramos Mades
+                </p>
+            </div>
+    </div>
+
+    <script>
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        let MsgHead = document.getElementById('msg');
+        let GreetHead = document.getElementById('greet');
+        let SignoutBtn = document.getElementById('signoutbutton');
+
+
+        let Signout = ()=>{
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = '../log-reg-0.html'
+        }
+
+        let CheckCred = ()=>{
+            if (!sessionStorage.getItem("user-creds"))
+            window.location.href = '../log-reg-0.html'
+
+            else {
+                MsgHead.innerText = `user with email "${UserCreds.username}" logged in`;
+                GreetHead.innerText = `welcome ${UserInfo.username}!`;
+            }
+        }
+
+        window.addEventListener('load', CheckCred);
+        SignoutBtn.addEventListener('click', Signout);
+
+    </script>
+</body>
+</html>

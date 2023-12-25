@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel = "Stylesheet" href = "csss-v2/aboutus.css">
+</head>
+<body>
+
+    <div class = "nav">
+        <div>
+            <a class = "home" href = "home.html">
+                Home
+            </a>
+        </div>
+        <div>
+            <a class = "subject" href = "subject.html">
+                Subject
+            </a>
+        </div>
+        <div>
+            <a class = "contact-us" href = "contactus.html">
+                Contact Us
+            </a>
+        </div>
+        <div class = "nav-4">
+            <button class = "signout-btn" type = "button" id = "signoutbutton"> Sign Out</button>
+        </div>
+    </div>
+
+    <div class = "content-0-1">
+
+        <div class="content-1">
+            <div class = "name-title">
+                <p>
+                    About Us
+                </p>
+            </div>
+    
+    
+            <div class = "description-1">
+                <p class="event-description">
+                    EventPro is a comprehensive event management system, driven by the mission to streamline event planning and execution. We offer a versatile platform tailored for an array of events from birthdays and weddings to corporate gatherings.
+                </p>
+            </div>
+            <div class = "description-2">
+                <p>
+                    Founded in 2023, EventPro has grown from a small startup to a trusted name in event management, serving hundreds of events and thousands of satisfied users.
+                </p>
+            </div>
+            <div class = "description-3">
+                <p>
+                    At EventPro, we value transparency, customer satisfaction, and continuous innovation. These principles guide our every decision and interaction.
+                </p>
+            </div>
+            <div class = "description-4">
+                <p>
+                    What sets EventPro apart is our commitment to a user-friendly experience, our range of features from scheduling to attendee management, and our dedication to security
+                </p>
+            </div>
+            <div class = "description-5">
+                <p>
+                    Ready to streamline your event management process? Try EventPro today or contact us for a personalized demo.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        let MsgHead = document.getElementById('msg');
+        let GreetHead = document.getElementById('greet');
+        let SignoutBtn = document.getElementById('signoutbutton');
+
+
+        let Signout = ()=>{
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = '../log-reg-0.html'
+        }
+
+        let CheckCred = ()=>{
+            if (!sessionStorage.getItem("user-creds"))
+            window.location.href = '../log-reg-0.html'
+
+            else {
+                MsgHead.innerText = `user with email "${UserCreds.username}" logged in`;
+                GreetHead.innerText = `welcome ${UserInfo.username}!`;
+            }
+        }
+
+        window.addEventListener('load', CheckCred);
+        SignoutBtn.addEventListener('click', Signout);
+
+    </script>
+
+</body>
+</html>

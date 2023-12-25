@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel = "Stylesheet" href = "csss-v2/contactus.css">
+</head>
+<body>
+    
+
+    <div class = "nav">
+        <div>
+            <a class = "home" href = "home.html">
+                Home
+            </a>
+        </div>
+        <div>
+            <a class = "about-us" href = "aboutus.html">
+                About Us
+            </a>
+        </div>
+        <div>
+            <a class = "subject" href = "subject.html">
+                Subject
+            </a>
+        </div>
+        <div class = "nav-4">
+            <button class = "signout-btn" type = "button" id = "signoutbutton"> Sign Out</button>
+        </div>
+    </div>
+
+    <div class = "content-0-1">
+
+        <div class="content-1">
+            <div class = "name-title">
+                <p>
+                    Contact Us
+                </p>
+            </div>
+            <div class = "logos">
+                <div>
+                    <a href = "https://www.facebook.com/Ezeild/" target="_blank">
+                    <ion-icon name="logo-facebook">
+                    </ion-icon>
+                    </a>
+                </div>
+                <div>
+                    <a href = "https://www.instagram.com/ezeild.ds_/" target="_blank">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                </div>
+                <div>
+                    <a href = "https://twitter.com/Cell_MemeBraiN" target="_blank">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                </div>
+                <div>
+                    <a href = "https://mail.google.com/mail/u/0/#inbox" target="_blank">
+                    <ion-icon name="logo-google"></ion-icon>
+                    </a>
+                </div>
+                <div>
+                    <a href = "https://www.youtube.com/" target="_blank">
+                    <ion-icon name="logo-youtube"></ion-icon>
+                    </a>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+    <script>
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+        let MsgHead = document.getElementById('msg');
+        let GreetHead = document.getElementById('greet');
+        let SignoutBtn = document.getElementById('signoutbutton');
+
+
+        let Signout = ()=>{
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = '../log-reg-0.html'
+        }
+
+        let CheckCred = ()=>{
+            if (!sessionStorage.getItem("user-creds"))
+            window.location.href = '../log-reg-0.html'
+
+            else {
+                MsgHead.innerText = `user with email "${UserCreds.username}" logged in`;
+                GreetHead.innerText = `welcome ${UserInfo.username}!`;
+            }
+        }
+
+        window.addEventListener('load', CheckCred);
+        SignoutBtn.addEventListener('click', Signout);
+
+    </script>
+</body>
+</html>
